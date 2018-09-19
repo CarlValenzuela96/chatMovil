@@ -11,12 +11,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Nota (2) Credenciales y configuración inicial de firebase
 export const firebaseConfig = {
-  apiKey: "AIzaSyAhO3HE7We3xMb-k9JHtB3HcwCKaxL1G7A",
-  authDomain: "app-icc714-2018-sem-2.firebaseapp.com",
-  databaseURL: "https://app-icc714-2018-sem-2.firebaseio.com",
-  projectId: "app-icc714-2018-sem-2",
-  storageBucket: "app-icc714-2018-sem-2.appspot.com",
-  messagingSenderId: "723970279214"
+  apiKey: "AIzaSyAeH9jIx0n_Eo3BfKUNpvmsWLN1mgWpLAQ",
+  authDomain: "chatmovil-50c59.firebaseapp.com",
+  databaseURL: "https://chatmovil-50c59.firebaseio.com",
+  projectId: "chatmovil-50c59",
+  storageBucket: "chatmovil-50c59.appspot.com",
+  messagingSenderId: "515411386440"
 };
 
 // Importa páginas (custom elements)

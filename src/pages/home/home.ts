@@ -20,11 +20,15 @@ export class HomePage {
   }
 
   send() {
+    if(!this.newMessage)return;
+
     this._db.list('messages').push({
-      author: 'Anónimo',
+      author: 'Carl',
       message: this.newMessage,
+      date : new Date().getHours()+":"+new Date().getMinutes()
     });
     this.newMessage = '';
   }
+
 
 }

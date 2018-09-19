@@ -12,6 +12,7 @@
     <ion-item text-wrap *ngFor="let msg of messages | async">
       <h2>{{ msg.author }}</h2>
       <p>{{ msg.message }}</p>
+      <h2 item-end>{{ msg.date }}</h2>
     </ion-item>
   </ion-list>
 
@@ -22,8 +23,8 @@
 
     <ion-item no-lines>
       <ion-input [(ngModel)]="newMessage" type="text" placeholder="Escribe aquí"></ion-input>
-      <button ion-button outline item-end icon-only (click)="send()">
-        <ion-icon name="send"></ion-icon>
+      <button ion-button outline item-end icon-only (click)="send()" [disabled]="!newMessage">
+        <ion-icon name="send"></ion-icon >
       </button>
     </ion-item>
 
