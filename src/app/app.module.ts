@@ -22,11 +22,13 @@ export const firebaseConfig = {
 // Importa páginas (custom elements)
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ConfModalPage } from "../pages/conf-modal/conf-modal";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ConfModalPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ConfModalPage
   ],
   providers: [
     StatusBar,

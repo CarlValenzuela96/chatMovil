@@ -1,18 +1,30 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-navbar color="secondary" no-lines>
     <ion-title>
-      Mensajes
-    </ion-title>
+      Mensajes  
+      
+    </ion-title>  
+    <ion-buttons end>                   
+      <button ion-button outline icon-only (click)="openModal()">
+        <ion-icon name="settings" color="light"></ion-icon >
+      </button>
+    </ion-buttons>
+      
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
 
-  <ion-list>
-    <ion-item text-wrap *ngFor="let msg of messages | async">
-      <h2>{{ msg.author }}</h2>
-      <p>{{ msg.message }}</p>
-      <h2 item-end>{{ msg.date }}</h2>
+  <ion-list class="chat-list" no-lines>
+    <ion-item text-wrap *ngFor="let msg of messages | async ">
+      <div class="chat-bubble">
+        
+        <div class="chat-message">
+          <h2>{{ msg.author }}</h2>
+          <p>{{ msg.message }}</p>
+        </div>
+      </div>  
+      <p item-end>{{ msg.date }}</p>
     </ion-item>
   </ion-list>
 
@@ -23,8 +35,8 @@
 
     <ion-item no-lines>
       <ion-input [(ngModel)]="newMessage" type="text" placeholder="Escribe aquí"></ion-input>
-      <button ion-button outline item-end icon-only (click)="send()" [disabled]="!newMessage">
-        <ion-icon name="send"></ion-icon >
+      <button ion-button outline item-end icon-only (click)="send()" [disabled]="!newMessage"  >
+        <ion-icon name="send" color="secondary"></ion-icon >
       </button>
     </ion-item>
 
