@@ -22,13 +22,19 @@ export const firebaseConfig = {
 // Importa páginas (custom elements)
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ConfModalPage } from "../pages/conf-modal/conf-modal";
+import { UserPage } from '../pages/user/user';
+import { LoginPage } from '../pages/login/login';
+import { RegistrarPage } from '../pages/registrar/registrar';
+import { ConfPage } from '../pages/conf/conf';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ConfModalPage
+    UserPage,
+    LoginPage,
+    RegistrarPage,
+    ConfPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import { ConfModalPage } from "../pages/conf-modal/conf-modal";
   entryComponents: [
     MyApp,
     HomePage,
-    ConfModalPage
+    UserPage,
+    LoginPage,
+    RegistrarPage,
+    ConfPage
   ],
   providers: [
     StatusBar,

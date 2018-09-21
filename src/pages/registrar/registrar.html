@@ -1,0 +1,29 @@
+<!--
+  Generated template for the RegistrarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary" >
+    <ion-title>registrar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <div class="centrado">
+    <ion-label color="secondary" stacked>Email</ion-label>
+    <ion-input [(ngModel)]="email" type="email" placeholder="Email Input"></ion-input>
+        
+    <ion-label color="secondary" stacked>Contraseña</ion-label>
+    <ion-input [(ngModel)]="pass" type="password" placeholder="Password Input"></ion-input>
+          
+    <button color="secondary" ion-button (click)="registrar()" [disabled]="!email || !pass"  round>
+      Registrar
+    </button>
+    <ion-label color="danger" stacked>{{msg}}</ion-label>
+  </div>  
+</ion-content>

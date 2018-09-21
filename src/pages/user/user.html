@@ -1,0 +1,28 @@
+<!--
+  Generated template for the UserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary" no-lines>
+    <ion-title>Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  
+  <div class="centrado">
+    
+    <h5>Nombre Usuario</h5>
+    <ion-input [(ngModel)]="usuario" placeholder="Escribe nombre usuario" ></ion-input>
+    <button color="secondary" ion-button (click)="addUser()" [disabled]="!usuario" round >
+      Ingresar
+    </button>
+    
+  </div>
+
+</ion-content>

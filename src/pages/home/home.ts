@@ -1,9 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs/Observable';
 import { Message } from '../../common/message';
-import { Content, List, ModalController } from 'ionic-angular';
+import { Content, List } from 'ionic-angular';
+import { ConfPage } from '../conf/conf'; 
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'page-home',
@@ -18,16 +20,17 @@ export class HomePage {
   messages: Observable<Message[]>;
   // Nuevo mensaje
   newMessage: string;
+  usuario: string;
+  id_usuario: string;
   private mutationObserver: MutationObserver;
   
-  constructor(public navCtrl: NavController, private _db: AngularFireDatabase, private modal: ModalController) {
+  constructor(public navCtrl: NavController, private _db: AngularFireDatabase, public navParams: NavParams
+    ,public aFA: AngularFireAuth) {
     this.messages = this._db.list<Message>('messages').valueChanges();
+    this.usuario = this.navParams.get('usuario');
   }
 
-  openModal(){
-    const mm = this.modal.create('ConfModalPage');
-    mm.present();
-  }
+  
 
 
   ionViewDidLoad(){
@@ -43,13 +46,26 @@ export class HomePage {
   send() {
     if(!this.newMessage)return;
 
+    var user = this.aFA.auth.currentUser;
+
+
     this._db.list('messages').push({
-      author: 'Carl',
+      author: this.usuario,
+      id_user: user.uid,
       message: this.newMessage,
       date : new Date().getHours()+":"+new Date().getMinutes()
     });
     this.newMessage = '';
     this.content.scrollToBottom(0);
+
+  }
+
+  delete(){
+       
+  }
+
+  opciones(){
+    this.navCtrl.push(ConfPage);
   }
 
  
