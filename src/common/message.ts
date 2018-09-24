@@ -3,4 +3,5 @@ export interface Message {
     id_user?:string,
     message: string,
     date? : string,
+    msgKey : string
 }

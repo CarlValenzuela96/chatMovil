@@ -7,6 +7,7 @@ import { Content, List } from 'ionic-angular';
 import { ConfPage } from '../conf/conf'; 
 import { AngularFireAuth } from '@angular/fire/auth';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -22,12 +23,17 @@ export class HomePage {
   newMessage: string;
   usuario: string;
   id_usuario: string;
+  msgKey: string;
+  item : Message;
+
   private mutationObserver: MutationObserver;
   
   constructor(public navCtrl: NavController, private _db: AngularFireDatabase, public navParams: NavParams
     ,public aFA: AngularFireAuth) {
     this.messages = this._db.list<Message>('messages').valueChanges();
     this.usuario = this.navParams.get('usuario');
+    this.id_usuario = this.aFA.auth.currentUser.uid;  
+
   }
 
   
@@ -48,20 +54,31 @@ export class HomePage {
 
     var user = this.aFA.auth.currentUser;
 
-
-    this._db.list('messages').push({
+    this.msgKey = this._db.createPushId();
+   /*  this._db.list('messages').push({
       author: this.usuario,
       id_user: user.uid,
       message: this.newMessage,
       date : new Date().getHours()+":"+new Date().getMinutes()
-    });
+    }); */
+
+    this.item = {
+      author: this.usuario,
+      id_user: user.uid,
+      message: this.newMessage,
+      date : new Date().getHours()+":"+new Date().getMinutes(),
+      msgKey: this.msgKey
+    };
+
+    this._db.list("messages").set(this.item.msgKey,this.item);
     this.newMessage = '';
     this.content.scrollToBottom(0);
 
   }
-
-  delete(){
-       
+  
+  
+  delete(key){
+    this._db.list("messages").remove(key);
   }
 
   opciones(){

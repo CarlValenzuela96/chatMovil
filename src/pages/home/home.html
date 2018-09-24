@@ -16,14 +16,21 @@
 <ion-content >
 
   <ion-list class="chat-list" no-lines>
-    <ion-item text-wrap *ngFor="let msg of messages | async ">
-      <div class="chat-bubble">
+    <ion-item text-wrap *ngFor="let msg of messages | async ;let idx = index">
         
+      <div class="chat-bubble">
+         
         <div class="chat-message">
+          <button *ngIf="msg.id_user==id_usuario" ion-button outline icon-only (click)="delete(msg.msgKey)" >
+            <ion-icon name="close" color="secondary"></ion-icon>
+        </button>
           <h2>{{ msg.author }}</h2>
           <p>{{ msg.message }}</p>
+          
+          
         </div>
-      </div>  
+      </div> 
+        
       <p item-end>{{ msg.date }}</p>
     </ion-item>
   </ion-list>
