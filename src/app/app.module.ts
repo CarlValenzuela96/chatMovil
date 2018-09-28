@@ -26,6 +26,9 @@ import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { RegistrarPage } from '../pages/registrar/registrar';
 import { ConfPage } from '../pages/conf/conf';
+import { MessagesProvider } from '../providers/messages/messages';
+import { Camera } from '@ionic-native/camera';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { ConfPage } from '../pages/conf/conf';
     SplashScreen,
     // Nota (4) Importa provider firebase database
     AngularFireDatabase,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MessagesProvider,
+    Camera
   ]
 })
 export class AppModule { }

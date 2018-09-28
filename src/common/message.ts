@@ -4,4 +4,5 @@ export interface Message {
     message: string,
     date? : string,
     msgKey : string
+    image? : string
 }

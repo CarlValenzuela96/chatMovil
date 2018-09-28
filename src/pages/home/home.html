@@ -25,6 +25,10 @@
             <ion-icon name="close" color="secondary"></ion-icon>
         </button>
           <h2>{{ msg.author }}</h2>
+          <span *ngIf="msg.image">
+            <img width="40%" height="40%" [src]="msg.image" *ngIf="msg.image"/>
+            
+          </span>
           <p>{{ msg.message }}</p>
           
           
@@ -39,10 +43,21 @@
 
 <ion-footer no-shadow no-border>
   <ion-toolbar position="bottom">
-
+    <img width="20%" height="20%" [hidden]="estImage" [src]="image"/> 
+    <button  ion-button outline icon-only (click)="borrarFoto()" [hidden]="estImage">
+      <ion-icon name="close" color="secondary"></ion-icon>
+    </button>
     <ion-item no-lines>
+     
       <ion-input [(ngModel)]="newMessage" type="text" placeholder="Escribe aquí"></ion-input>
-      <button ion-button outline item-end icon-only (click)="send()" [disabled]="!newMessage"  >
+      
+      <button ion-button outline item-end icon-only (click)="picture(0)"  >
+          <ion-icon name="image" color="secondary"></ion-icon >
+        </button>
+      <button ion-button outline item-end icon-only (click)="picture(1)"  >
+        <ion-icon name="camera" color="secondary"></ion-icon >
+      </button>
+      <button ion-button outline item-end icon-only (click)="send()"  >
         <ion-icon name="send" color="secondary"></ion-icon >
       </button>
     </ion-item>
